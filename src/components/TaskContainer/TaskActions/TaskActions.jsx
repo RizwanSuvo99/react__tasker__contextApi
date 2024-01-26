@@ -3,12 +3,21 @@ import SearchTasks from "../SearchTasks/SearchTasks";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
 import { useTasks } from "../../../context/TaskContext";
 import { deleteAllTask } from "../../../reducer/actions";
+import { toast } from "react-toastify";
 
 const TaskActions = () => {
   const [showModal, setShowModal] = useState(false);
   const { dispatch } = useTasks();
   const handleDeleteAll = () => {
     deleteAllTask(dispatch);
+    toast.warning("All Tasks Deleted successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   };
   return (
     <>

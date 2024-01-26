@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useTasks } from "../../../context/TaskContext";
 import { deleteTask, favoriteTask } from "../../../reducer/actions";
 import { FaStar } from "react-icons/fa6";
@@ -10,6 +11,14 @@ export default function SingleTask({
 
   const handleDelete = (taskId) => {
     deleteTask(taskId, dispatch);
+    toast.warning("Task Deleted successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   };
 
   const handleFavourite = (taskId) => {

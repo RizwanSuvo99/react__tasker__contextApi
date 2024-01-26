@@ -30,14 +30,14 @@ const AddTaskModal = ({ setShowModal }) => {
     e.preventDefault();
     addTask(task, dispatch);
     setShowModal(false);
-    // toast.success("Task added successfully", {
-    //   position: toast.POSITION.TOP_CENTER,
-    //   autoClose: 3000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    // });
+    toast.success("Task added successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   };
 
   return (

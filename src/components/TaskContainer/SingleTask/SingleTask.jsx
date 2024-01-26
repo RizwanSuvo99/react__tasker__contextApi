@@ -33,7 +33,14 @@ export default function SingleTask({
             {tags.map((tag) => (
               <li key={tag}>
                 <span
-                  className={`inline-block h-5 whitespace-nowrap rounded-[45px] bg-[rgb(255,23,75)] px-2.5 text-sm capitalize text-[#F4F5F6]`}
+                  style={{
+                    backgroundColor: `rgb(${Math.floor(
+                      Math.random() * 255 + 1
+                    )},${Math.floor(Math.random() * 255 + 1)},${Math.floor(
+                      Math.random() * 255 + 1
+                    )}`,
+                  }}
+                  className={`inline-block h-5 whitespace-nowrap rounded-[45px] px-2.5 text-sm capitalize text-[#F4F5F6]`}
                 >
                   {tag}
                 </span>

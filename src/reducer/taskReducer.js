@@ -30,14 +30,18 @@ export const taskReducer = (state, action) => {
       const findTaskIndex = state.tasks.findIndex(
         (task) => task.id === payload
       );
-      const newTasks = [...state.tasks];
 
-      newTasks[findTaskIndex].isFavourite =
-        !newTasks[findTaskIndex].isFavourite;
-     console.log(state.tasks);
-      return {
-        ...state,
-        tasks: [...newTasks],
+      if (findTaskIndex !== -1) {
+        const newTasks = [...state.tasks];
+        newTasks[findTaskIndex] = {
+          ...newTasks[findTaskIndex],
+          isFavourite: !newTasks[findTaskIndex].isFavourite,
       };
+
+        return {
+          ...state,
+          tasks: newTasks,
+        };
+      }
   }
 };

@@ -1,11 +1,19 @@
-function App() {
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import HeroSection from "./components/HeroSection/HeroSection";
+import TaskContainer from "./components/TaskContainer/TaskContainer";
+
+const App = () => {
   return (
     <>
-      <h1 className="text-3xl underline">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, vitae?
-      </h1>
+      <Header />
+      <div className="flex flex-col justify-center items-center">
+        <HeroSection />
+        <TaskContainer />
+      </div>
+      <Footer />
     </>
   );
-}
+};
 
 export default App;

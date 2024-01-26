@@ -13,7 +13,7 @@ const TaskActions = () => {
   return (
     <>
       {showModal && <AddTaskModal setShowModal={setShowModal} />}
-      <div className="mb-14 items-center justify-between sm:flex">
+      <div className="mb-14 gap-4 items-center justify-between sm:flex">
         <h2 className="text-2xl font-semibold max-sm:mb-4">Your Tasks</h2>
         <div className="flex items-center space-x-5">
           <SearchTasks />

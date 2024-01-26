@@ -1,4 +1,9 @@
-import { ADD__TASK, DELETE__ALL__TASK, DELETE__TASK } from "./actionsTypes";
+import {
+  ADD__TASK,
+  DELETE__ALL__TASK,
+  DELETE__TASK,
+  FAVOURITE__TASK,
+} from "./actionsTypes";
 
 export const addTask = (task, dispatch) => {
   dispatch({
@@ -17,5 +22,12 @@ export const deleteTask = (id, dispatch) => {
 export const deleteAllTask = (dispatch) => {
   dispatch({
     type: DELETE__ALL__TASK,
+  });
+};
+
+export const favoriteTask = (id, dispatch) => {
+  dispatch({
+    type: FAVOURITE__TASK,
+    payload: id,
   });
 };

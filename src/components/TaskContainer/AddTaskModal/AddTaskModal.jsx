@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addTask } from "../../../reducer/actions";
 import { useTasks } from "../../../context/TaskContext";
+import { toast } from "react-toastify";
 
 const AddTaskModal = ({ setShowModal }) => {
   const { dispatch } = useTasks();
@@ -29,6 +30,14 @@ const AddTaskModal = ({ setShowModal }) => {
     e.preventDefault();
     addTask(task, dispatch);
     setShowModal(false);
+    // toast.success("Task added successfully", {
+    //   position: toast.POSITION.TOP_CENTER,
+    //   autoClose: 3000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    // });
   };
 
   return (

@@ -3,6 +3,7 @@ import {
   DELETE__ALL__TASK,
   DELETE__TASK,
   FAVOURITE__TASK,
+  SEARCH__TASK,
 } from "./actionsTypes";
 
 export const addTask = (task, dispatch) => {
@@ -29,5 +30,12 @@ export const favoriteTask = (id, dispatch) => {
   dispatch({
     type: FAVOURITE__TASK,
     payload: id,
+  });
+};
+
+export const searchTask = (searchText, dispatch) => {
+  dispatch({
+    type: SEARCH__TASK,
+    payload: searchText,
   });
 };

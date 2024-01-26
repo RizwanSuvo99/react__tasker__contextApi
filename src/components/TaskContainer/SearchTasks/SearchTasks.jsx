@@ -1,6 +1,18 @@
+import { useState } from "react";
+import { searchTask } from "../../../reducer/actions";
+import { useTasks } from "../../../context/TaskContext";
+
 const SearchTasks = () => {
+  const [searchText, setSearchText] = useState("");
+  const { dispatch } = useTasks();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchTask(searchText, dispatch);
+    setSearchText("");
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex">
         <div className="relative overflow-hidden rounded-lg text-gray-50 md:min-w-[380px] lg:min-w-[440px]">
           <input
@@ -8,6 +20,8 @@ const SearchTasks = () => {
             id="search-dropdown"
             className="z-20 block w-full bg-gray-800 px-4 py-2 pr-10 focus:outline-none"
             placeholder="Search Task"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
             required
           />
           <button

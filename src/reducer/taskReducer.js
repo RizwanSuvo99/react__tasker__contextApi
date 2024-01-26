@@ -5,6 +5,7 @@ import {
   DELETE__ALL__TASK,
   DELETE__TASK,
   FAVOURITE__TASK,
+  SEARCH__TASK,
 } from "./actionsTypes";
 
 export const taskReducer = (state, action) => {
@@ -16,10 +17,12 @@ export const taskReducer = (state, action) => {
         tasks: [...state.tasks, payload],
       };
     case DELETE__TASK:
-      const filteredTasks = state.tasks.filter((task) => task.id !== payload);
+      const filteredDeleteTasks = state.tasks.filter(
+        (task) => task.id !== payload
+      );
       return {
         ...state,
-        tasks: [...filteredTasks],
+        tasks: [...filteredDeleteTasks],
       };
     case DELETE__ALL__TASK:
       return {
@@ -30,18 +33,25 @@ export const taskReducer = (state, action) => {
       const findTaskIndex = state.tasks.findIndex(
         (task) => task.id === payload
       );
-
       if (findTaskIndex !== -1) {
         const newTasks = [...state.tasks];
         newTasks[findTaskIndex] = {
           ...newTasks[findTaskIndex],
           isFavourite: !newTasks[findTaskIndex].isFavourite,
-      };
-
+        };
         return {
           ...state,
           tasks: newTasks,
         };
       }
+      return;
+    case SEARCH__TASK:
+      const filteredSearchTasks = state.tasks.filter((task) =>
+        task.title.toLowerCase().includes(payload.toLowerCase())
+      );
+      return {
+        ...state,
+        tasks: [...filteredSearchTasks],
+      };
   }
 };

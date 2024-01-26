@@ -10,6 +10,7 @@ export default function SingleTask({
   const handleDelete = (taskId) => {
     deleteTask(taskId, dispatch);
   };
+  
   return (
     <>
       <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">

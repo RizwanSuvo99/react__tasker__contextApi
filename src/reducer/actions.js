@@ -1,4 +1,4 @@
-import { ADD__TASK, DELETE__TASK } from "./actionsTypes";
+import { ADD__TASK, DELETE__ALL__TASK, DELETE__TASK } from "./actionsTypes";
 
 export const addTask = (task, dispatch) => {
   dispatch({
@@ -8,11 +8,14 @@ export const addTask = (task, dispatch) => {
 };
 
 export const deleteTask = (id, dispatch) => {
-    dispatch({
-      type: DELETE__TASK,
-      payload: id,
-    });
+  dispatch({
+    type: DELETE__TASK,
+    payload: id,
+  });
 };
 
-
-  
+export const deleteAllTask = (dispatch) => {
+  dispatch({
+    type: DELETE__ALL__TASK,
+  });
+};

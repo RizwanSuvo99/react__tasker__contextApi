@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-case-declarations */
-import { ADD__TASK, DELETE__TASK } from "./actionsTypes";
+import { ADD__TASK, DELETE__ALL__TASK, DELETE__TASK } from "./actionsTypes";
 
 export const taskReducer = (state, action) => {
   const { type, payload } = action;
@@ -16,5 +16,11 @@ export const taskReducer = (state, action) => {
         ...state,
         tasks: [...filteredTasks],
       };
+    case DELETE__ALL__TASK:
+      return {
+        ...state,
+        tasks: [],
+      };
+    
   }
 };

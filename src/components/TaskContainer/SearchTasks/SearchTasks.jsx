@@ -7,7 +7,7 @@ const SearchTasks = () => {
   const { dispatch } = useTasks();
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchTask(searchText, dispatch);
+    searchTask(searchText.trim(), dispatch);
     setSearchText("");
   };
 

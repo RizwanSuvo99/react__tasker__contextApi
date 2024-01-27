@@ -50,12 +50,9 @@ export const taskReducer = (state, action) => {
       }
       return;
     case SEARCH__TASK:
-      const filteredSearchTasks = state.tasks.filter((task) =>
-        task.title.toLowerCase().includes(payload.toLowerCase())
-      );
       return {
         ...state,
-        tasks: [...filteredSearchTasks],
+        searchText: payload,
       };
     case SHOW__MODAL:
       return {

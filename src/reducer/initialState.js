@@ -57,4 +57,5 @@ export const initialState = {
   ],
   showModal: false,
   taskToUpdate: null,
+  searchText: "",
 };

@@ -12,6 +12,7 @@ export const TaskContextProvider = ({ children }) => {
     tasks: state.tasks,
     showModal: state.showModal,
     taskToUpdate: state.taskToUpdate,
+    searchText: state.searchText,
   };
   return <TaskContext.Provider value={values}>{children}</TaskContext.Provider>;
 };

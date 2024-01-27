@@ -73,7 +73,6 @@ export const taskReducer = (state, action) => {
       const updatedTasks = state.tasks.map((task) => {
         if (task.id === payload.id) {
           return {
-            ...task,
             ...payload,
           };
         }
@@ -85,7 +84,6 @@ export const taskReducer = (state, action) => {
         showModal: !state.showModal,
         taskToUpdate: null,
       };
-
     default:
       return {
         ...state,

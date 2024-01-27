@@ -27,6 +27,7 @@ const AddTaskModal = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
+
     if (name === "tags") {
       value = value.split(",");
     }
@@ -44,13 +45,13 @@ const AddTaskModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrorMessages = {};
-    if (!task.title) {
+    if (!task.title.trim()) {
       newErrorMessages.title = "Please enter a title";
     }
-    if (!task.description) {
+    if (!task.description.trim()) {
       newErrorMessages.description = "Please enter a description";
     }
-    if (!task.tags) {
+    if (Array.isArray(task.tags) ? task.tags[0] === "" : !task.tags.trim()) {
       newErrorMessages.tags = "Please enter tags";
     }
     if (!task.priority) {
@@ -167,7 +168,6 @@ const AddTaskModal = () => {
                   errorMessages.priority && "border-red-500"
                 }`}
                 name="priority"
-                value={task.priority}
                 onChange={handleChange}
                 id="priority"
               >

@@ -22,7 +22,6 @@ const SearchTasks = () => {
             placeholder="Search Task"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            required
           />
           <button
             type="submit"

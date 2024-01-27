@@ -32,7 +32,7 @@ const AddTaskModal = ({ setShowModal }) => {
     setShowModal(false);
     toast.success("Task added successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -111,7 +111,13 @@ const AddTaskModal = ({ setShowModal }) => {
           </div>
         </div>
 
-        <div className="mt-16 flex justify-center lg:mt-20">
+        <div className="mt-16 flex gap-5 justify-center lg:mt-20">
+          <button
+            className="rounded bg-red-600 px-4 py-2 text-white transition-all hover:opacity-80"
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </button>
           <button
             type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"

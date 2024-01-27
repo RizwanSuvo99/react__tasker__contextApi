@@ -10,10 +10,12 @@ export default function SingleTask({
   const { dispatch } = useTasks();
 
   const handleDelete = (taskId) => {
+    const isConfirm = confirm("Do you want to Delete?Please Confirm!");
+    if (!isConfirm) return;
     deleteTask(taskId, dispatch);
     toast.warning("Task Deleted successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

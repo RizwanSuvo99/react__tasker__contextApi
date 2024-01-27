@@ -9,15 +9,20 @@ const TaskActions = () => {
   const [showModal, setShowModal] = useState(false);
   const { dispatch } = useTasks();
   const handleDeleteAll = () => {
+    const isConfirm = confirm("Do you want to Delete All Task?Please Confirm!");
+    if (!isConfirm) return;
     deleteAllTask(dispatch);
     toast.warning("All Tasks Deleted successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
     });
+  };
+  const handleCloseClick = () => {
+    setShowModal(false);
   };
   return (
     <>

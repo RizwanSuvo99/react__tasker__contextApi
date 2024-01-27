@@ -53,5 +53,9 @@ export const taskReducer = (state, action) => {
         ...state,
         tasks: [...filteredSearchTasks],
       };
+    default:
+      return {
+        ...state,
+      };
   }
 };

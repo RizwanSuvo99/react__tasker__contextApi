@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const AddTaskModal = () => {
   const { dispatch, taskToUpdate } = useTasks();
+  // console.log(taskToUpdate);
   const [task, setTask] = useState(
     taskToUpdate || {
       id: crypto.randomUUID(),
@@ -15,6 +16,8 @@ const AddTaskModal = () => {
       isFavourite: false,
     }
   );
+
+  console.log(task);
 
   // State to store error messages
   const [errorMessages, setErrorMessages] = useState({
@@ -169,12 +172,13 @@ const AddTaskModal = () => {
                 }`}
                 name="priority"
                 onChange={handleChange}
+                value={task.priority}
                 id="priority"
               >
                 <option value="">Select Priority</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
               {errorMessages.priority && (
                 <p className="text-red-500">{errorMessages.priority}</p>

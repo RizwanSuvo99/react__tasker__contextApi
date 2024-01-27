@@ -1,12 +1,15 @@
 import { toast } from "react-toastify";
 import { useTasks } from "../../../context/TaskContext";
-import { deleteTask, favoriteTask } from "../../../reducer/actions";
+import {
+  deleteTask,
+  favoriteTask,
+  showEdit,
+} from "../../../reducer/actions";
 import { FaStar } from "react-icons/fa6";
 
 /* eslint-disable react/prop-types */
-export default function SingleTask({
-  task: { id, title, description, tags, priority, isFavourite },
-}) {
+export default function SingleTask({ task }) {
+  const { id, title, description, tags, priority, isFavourite } = task;
   const { dispatch } = useTasks();
 
   const handleDelete = (taskId) => {
@@ -24,7 +27,30 @@ export default function SingleTask({
   };
 
   const handleFavourite = (taskId) => {
+    if (!isFavourite) {
+      toast.success("Added to Favourite successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } else {
+      toast.warning("Removed from Favourite successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
     favoriteTask(taskId, dispatch);
+  };
+
+  const handleEdit = (task) => {
+    showEdit(task, dispatch);
   };
 
   return (
@@ -65,7 +91,9 @@ export default function SingleTask({
             <button onClick={() => handleDelete(id)} className="text-red-500">
               Delete
             </button>
-            <button className="text-blue-500">Edit</button>
+            <button onClick={() => handleEdit(task)} className="text-blue-500">
+              Edit
+            </button>
           </div>
         </td>
       </tr>

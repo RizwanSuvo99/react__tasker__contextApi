@@ -10,6 +10,8 @@ export const TaskContextProvider = ({ children }) => {
   const values = {
     dispatch,
     tasks: state.tasks,
+    showModal: state.showModal,
+    taskToUpdate: state.taskToUpdate,
   };
   return <TaskContext.Provider value={values}>{children}</TaskContext.Provider>;
 };

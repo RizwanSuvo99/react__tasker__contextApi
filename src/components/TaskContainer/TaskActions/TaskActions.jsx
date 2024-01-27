@@ -1,13 +1,13 @@
-import { useState } from "react";
+
 import SearchTasks from "../SearchTasks/SearchTasks";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
 import { useTasks } from "../../../context/TaskContext";
-import { deleteAllTask } from "../../../reducer/actions";
+import { deleteAllTask, setShowModal } from "../../../reducer/actions";
 import { toast } from "react-toastify";
 
 const TaskActions = () => {
-  const [showModal, setShowModal] = useState(false);
-  const { dispatch } = useTasks();
+  // const [showModal, setShowModal] = useState(false);
+  const { dispatch,showModal } = useTasks();
   const handleDeleteAll = () => {
     const isConfirm = confirm("Do you want to Delete All Task?Please Confirm!");
     if (!isConfirm) return;
@@ -21,18 +21,15 @@ const TaskActions = () => {
       draggable: true,
     });
   };
-  const handleCloseClick = () => {
-    setShowModal(false);
-  };
   return (
     <>
-      {showModal && <AddTaskModal setShowModal={setShowModal} />}
+      {showModal && <AddTaskModal />}
       <div className="mb-14 gap-4 items-center justify-between sm:flex">
         <h2 className="text-2xl font-semibold max-sm:mb-4">Your Tasks</h2>
         <div className="flex items-center space-x-5">
           <SearchTasks />
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => setShowModal(dispatch)}
             className="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold"
           >
             Add Task

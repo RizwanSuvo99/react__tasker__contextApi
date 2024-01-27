@@ -4,6 +4,9 @@ import {
   DELETE__TASK,
   FAVOURITE__TASK,
   SEARCH__TASK,
+  SHOW__EDIT,
+  SHOW__MODAL,
+  UPDATE__TASK,
 } from "./actionsTypes";
 
 export const addTask = (task, dispatch) => {
@@ -37,5 +40,25 @@ export const searchTask = (searchText, dispatch) => {
   dispatch({
     type: SEARCH__TASK,
     payload: searchText,
+  });
+};
+
+export const setShowModal = (dispatch) => {
+  dispatch({
+    type: SHOW__MODAL,
+  });
+};
+
+export const showEdit = (task, dispatch) => {
+  dispatch({
+    type: SHOW__EDIT,
+    payload: task,
+  });
+};
+
+export const updateTask = (task, dispatch) => {
+  dispatch({
+    type: UPDATE__TASK,
+    payload: task,
   });
 };

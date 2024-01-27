@@ -55,4 +55,6 @@ export const initialState = {
       isFavourite: false,
     },
   ],
+  showModal: false,
+  taskToUpdate: null,
 };

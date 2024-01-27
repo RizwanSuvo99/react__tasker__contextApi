@@ -6,6 +6,9 @@ import {
   DELETE__TASK,
   FAVOURITE__TASK,
   SEARCH__TASK,
+  SHOW__EDIT,
+  SHOW__MODAL,
+  UPDATE__TASK,
 } from "./actionsTypes";
 
 export const taskReducer = (state, action) => {
@@ -15,6 +18,7 @@ export const taskReducer = (state, action) => {
       return {
         ...state,
         tasks: [...state.tasks, payload],
+        showModal: !state.showModal,
       };
     case DELETE__TASK:
       const filteredDeleteTasks = state.tasks.filter(
@@ -53,6 +57,35 @@ export const taskReducer = (state, action) => {
         ...state,
         tasks: [...filteredSearchTasks],
       };
+    case SHOW__MODAL:
+      return {
+        ...state,
+        showModal: !state.showModal,
+        taskToUpdate: null,
+      };
+    case SHOW__EDIT:
+      return {
+        ...state,
+        showModal: !state.showModal,
+        taskToUpdate: payload,
+      };
+    case UPDATE__TASK:
+      const updatedTasks = state.tasks.map((task) => {
+        if (task.id === payload.id) {
+          return {
+            ...task,
+            ...payload,
+          };
+        }
+        return task;
+      });
+      return {
+        ...state,
+        tasks: [...updatedTasks],
+        showModal: !state.showModal,
+        taskToUpdate: null,
+      };
+
     default:
       return {
         ...state,

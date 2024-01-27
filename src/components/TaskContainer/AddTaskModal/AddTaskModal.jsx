@@ -30,7 +30,6 @@ const AddTaskModal = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
-
     if (name === "tags") {
       value = value.split(",");
     }
@@ -38,7 +37,6 @@ const AddTaskModal = () => {
       ...task,
       [name]: value,
     });
-
     setErrorMessages({
       ...errorMessages,
       [name]: "",
@@ -77,6 +75,7 @@ const AddTaskModal = () => {
       });
       return;
     }
+
     if (taskToUpdate) {
       updateTask(task, dispatch);
       toast.success("Task Updated successfully", {
@@ -89,7 +88,9 @@ const AddTaskModal = () => {
       });
       return;
     }
+
     addTask(task, dispatch);
+
     toast.success("Task added successfully", {
       position: "top-center",
       autoClose: 2000,

@@ -1,4 +1,3 @@
-
 import SearchTasks from "../SearchTasks/SearchTasks";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
 import { useTasks } from "../../../context/TaskContext";
@@ -6,8 +5,8 @@ import { deleteAllTask, setShowModal } from "../../../reducer/actions";
 import { toast } from "react-toastify";
 
 const TaskActions = () => {
-  // const [showModal, setShowModal] = useState(false);
-  const { dispatch,showModal } = useTasks();
+  const { dispatch, showModal, tasks } = useTasks();
+
   const handleDeleteAll = () => {
     const isConfirm = confirm("Do you want to Delete All Task?Please Confirm!");
     if (!isConfirm) return;
@@ -21,6 +20,7 @@ const TaskActions = () => {
       draggable: true,
     });
   };
+  
   return (
     <>
       {showModal && <AddTaskModal />}
@@ -35,6 +35,7 @@ const TaskActions = () => {
             Add Task
           </button>
           <button
+            disabled={tasks.length === 0}
             onClick={handleDeleteAll}
             className="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold"
           >
